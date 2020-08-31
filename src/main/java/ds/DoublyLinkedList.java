@@ -17,7 +17,7 @@ public class DoublyLinkedList<T>{
 
 
 
-    public void addElementToLast(T element) throws InvalidElementException{
+    public DoublyLinkedListNode addElementToLast(T element) throws InvalidElementException{
         if(element == null) {
             throw new InvalidElementException();
         }
@@ -27,6 +27,8 @@ public class DoublyLinkedList<T>{
         tail.prev = node;
         temp.next = node;
         node.prev = temp;
+
+        return node;
     }
 
 
@@ -35,6 +37,12 @@ public class DoublyLinkedList<T>{
             node.prev.next = node.next;
             node.next.prev = node.prev;
         }
+    }
+
+    public DoublyLinkedListNode getFirstNode() {
+        if(head.next != tail)
+            return head.next;
+        return null;
     }
 }
 
